@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "gamevision"
+version = "0.1.0"
+description = "Universal game entity detection library using computer vision + ML"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "GameVisionAI Team"}]
+
+dependencies = [
+    "ultralytics>=8.0",
+    "torch>=2.0",
+    "onnxruntime>=1.16",
+    "opencv-python>=4.8",
+    "mss>=9.0",
+    "numpy>=1.24",
+    "pillow>=10.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+gpu = ["onnxruntime-gpu>=1.16"]
+server = ["fastapi>=0.100", "uvicorn>=0.20"]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.1"]
+
+[project.scripts]
+gv-detect = "gamevision.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["gamevision*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
