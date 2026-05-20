@@ -1,8 +1,16 @@
 __pycache__/
 *.pyc
+*.pyo
 .venv/
 *.onnx
 *.pt
+*.engine
 datasets/
+!datasets/.gitkeep
 runs/
 .env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+detection_result.png
